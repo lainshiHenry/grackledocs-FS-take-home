@@ -1,0 +1,191 @@
+{
+    "$comment": "Template representing the JSON output of the axe-core CLI (@axe-core/cli). The CLI writes an array with one results object per analyzed URL/page. Replace placeholder values with real data. See https://github.com/dequelabs/axe-core/blob/develop/doc/API.md#results-object",
+    "results": [
+        {
+            "url": "https://example.com/page-under-test",
+            "timestamp": "2026-09-02T12:00:00.000Z",
+            "testEngine": {
+                "name": "axe-core",
+                "version": "4.10.0"
+            },
+            "testRunner": {
+                "name": "axe"
+            },
+            "testEnvironment": {
+                "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36",
+                "windowWidth": 1280,
+                "windowHeight": 720,
+                "orientationAngle": 0,
+                "orientationType": "landscape-primary"
+            },
+            "toolOptions": {
+                "reporter": "v1"
+            },
+            "inapplicable": [
+                {
+                    "id": "video-caption",
+                    "impact": null,
+                    "tags": [
+                        "cat.text-alternatives",
+                        "wcag2a",
+                        "wcag122"
+                    ],
+                    "description": "Ensure <video> elements have captions",
+                    "help": "<video> elements must have captions",
+                    "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/video-caption?application=axeAPI",
+                    "nodes": []
+                }
+            ],
+            "passes": [
+                {
+                    "id": "document-title",
+                    "impact": null,
+                    "tags": [
+                        "cat.text-alternatives",
+                        "wcag2a",
+                        "wcag242"
+                    ],
+                    "description": "Ensure each HTML document contains a non-empty <title> element",
+                    "help": "Documents must have <title> element to aid in navigation",
+                    "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/document-title?application=axeAPI",
+                    "nodes": [
+                        {
+                            "any": [
+                                {
+                                    "id": "doc-has-title",
+                                    "data": null,
+                                    "relatedNodes": [],
+                                    "impact": "serious",
+                                    "message": "Document has a non-empty <title> element"
+                                }
+                            ],
+                            "all": [],
+                            "none": [],
+                            "impact": null,
+                            "html": "<html lang=\"en\">",
+                            "target": [
+                                "html"
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "incomplete": [
+                {
+                    "id": "color-contrast",
+                    "impact": "serious",
+                    "tags": [
+                        "cat.color",
+                        "wcag2aa",
+                        "wcag143"
+                    ],
+                    "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+                    "help": "Elements must meet minimum color contrast ratio thresholds",
+                    "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/color-contrast?application=axeAPI",
+                    "nodes": [
+                        {
+                            "any": [
+                                {
+                                    "id": "color-contrast",
+                                    "data": {
+                                        "fgColor": "#767676",
+                                        "bgColor": "#ffffff",
+                                        "contrastRatio": 4.54,
+                                        "fontSize": "12.0pt",
+                                        "fontWeight": "normal",
+                                        "expectedContrastRatio": "4.5:1"
+                                    },
+                                    "relatedNodes": [],
+                                    "impact": "serious",
+                                    "message": "Element's background color could not be determined due to a background image"
+                                }
+                            ],
+                            "all": [],
+                            "none": [],
+                            "impact": "serious",
+                            "html": "<span class=\"hero-caption\">Overlay text</span>",
+                            "target": [
+                                ".hero-caption"
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "violations": [
+                {
+                    "id": "image-alt",
+                    "impact": "critical",
+                    "tags": [
+                        "cat.text-alternatives",
+                        "wcag2a",
+                        "wcag111",
+                        "section508",
+                        "section508.22.a",
+                        "ACT"
+                    ],
+                    "description": "Ensure <img> elements have alternate text or a role of none or presentation",
+                    "help": "Images must have alternate text",
+                    "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/image-alt?application=axeAPI",
+                    "nodes": [
+                        {
+                            "any": [
+                                {
+                                    "id": "has-alt",
+                                    "data": null,
+                                    "relatedNodes": [],
+                                    "impact": "critical",
+                                    "message": "Element does not have an alt attribute"
+                                }
+                            ],
+                            "all": [],
+                            "none": [],
+                            "impact": "critical",
+                            "html": "<img src=\"/images/banner.png\">",
+                            "target": [
+                                "img"
+                            ],
+                            "failureSummary": "Fix any of the following:\n  Element does not have an alt attribute\n  aria-label attribute does not exist or is empty"
+                        }
+                    ]
+                },
+                {
+                    "id": "label",
+                    "impact": "critical",
+                    "tags": [
+                        "cat.forms",
+                        "wcag2a",
+                        "wcag412",
+                        "wcag131",
+                        "section508",
+                        "section508.22.n",
+                        "ACT"
+                    ],
+                    "description": "Ensure every form element has a label",
+                    "help": "Form elements must have labels",
+                    "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/label?application=axeAPI",
+                    "nodes": [
+                        {
+                            "any": [
+                                {
+                                    "id": "aria-label",
+                                    "data": null,
+                                    "relatedNodes": [],
+                                    "impact": "serious",
+                                    "message": "aria-label attribute does not exist or is empty"
+                                }
+                            ],
+                            "all": [],
+                            "none": [],
+                            "impact": "critical",
+                            "html": "<input type=\"text\" name=\"email\">",
+                            "target": [
+                                "input[name=\"email\"]"
+                            ],
+                            "failureSummary": "Fix any of the following:\n  Form element does not have an implicit (wrapped) <label>\n  Form element does not have an explicit <label>"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
