@@ -13,7 +13,7 @@ export function ErrorState({ message, onRetry }: ErrorStateProps) {
         >
             <AlertTriangle aria-hidden="true" className="size-8 text-pending" />
             <p className="max-w-sm text-slate-700">
-                We hit a snag loading your violations. {message}
+                There was an issue loading your violations. {message}
             </p>
             <button
                 type="button"
