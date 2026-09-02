@@ -1,8 +1,6 @@
 # GrackleDocs Accessibility Dashboard
 
-A React dashboard for reviewing accessibility (a11y) issues found in digital documents and
-web content, filtering/searching them, inspecting issue details, and tracking remediation
-progress. Built with Vite, React 19, TypeScript, and Tailwind CSS v4.
+A React dashboard for reviewing accessibility (a11y) issues found in digital documents and web content, filtering/searching them, inspecting issue details, and tracking remediation progress. Built with Vite, React 19, TypeScript, and Tailwind CSS v4.
 
 ## Quick-start
 
@@ -12,12 +10,16 @@ npm install
 npm run dev
 ```
 
+Navigate to `http://localhost:5173`
+
 ### Running the production build
 ```bash
 npm install
 npm run build
 npm run preview
 ```
+
+Navigate to `http://localhost:4173`
 
 ## Stack
 
@@ -78,12 +80,7 @@ npm run lint       # run ESLint
 
 ```bash
 npm run test          # run once
-npm run test:watch
 ```
-
-Config: [jest.config.cjs](jest.config.cjs) + [babel.config.cjs](babel.config.cjs), jsdom
-environment, setup in [src/test/setupTests.ts](src/test/setupTests.ts). Tests live alongside
-source files as `*.test.ts(x)`.
 
 ### End-to-end tests (Playwright)
 
@@ -91,14 +88,20 @@ source files as `*.test.ts(x)`.
 npm run test:e2e
 ```
 
-Config: [playwright.config.ts](playwright.config.ts) (runs on port 5175 and auto-starts the dev
-server). Tests live in [e2e/](e2e/).
-
-> **Note:** `@playwright/test` is pinned to `1.48.0` because newer Playwright browser builds
-> aren't supported on macOS 13 (Ventura). If you're on a newer OS/CI, consider bumping the
-> version and dropping the pin.
+> **Note:** `@playwright/test` is pinned to `1.48.0` because newer Playwright browser builds aren't supported on macOS 13 (Ventura). If you're on a newer OS/CI, consider bumping the version and dropping the pin.
 
 ### Git hooks
 
-A pre-commit hook (`.husky/pre-commit`) runs `npm run lint && npm test` (unit tests only —
-e2e tests are excluded since they need a browser and are slower).
+A pre-commit hook (`.husky/pre-commit`) runs `npm run lint && npm test` (unit tests only — e2e tests are excluded since they need a browser and are slower).
+
+## Current limitation (due to time constraint)
+- Application is not fully keyboard accessible (keyboard focus is lost) due usage of div tags, rather than proper HTML syntax
+- Page speed load is rather slow, will need to optimize page layout to reduce component and function nesting.
+- Will need to incorporate hydration techniques to reduce overall page loading speed.
+- My Mac is running an on older Mac OS causing the playwright/test package to be limited to 1.48.0
+
+
+## Current website metrics
+- Google Lighthouse accessibility score: 93 (A few colour contrast violations)
+- Google Lighthouse performance score: 18 (Page speed index was long [6s], largest contentful paint [11.3s])
+- 4 accessibility violations found with Axe DevTools Chrome extension (1 regarding aria hidden and 3 regarding colour contrast on the demo controls at the bottom)
